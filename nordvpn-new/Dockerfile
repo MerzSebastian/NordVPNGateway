@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-ARG VERSION=3.9.1-1
+ARG VERSION=3.8.5
 RUN apt update && \
        apt install -y wget && \
        wget -O /tmp/nordrepo.deb https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb && \
