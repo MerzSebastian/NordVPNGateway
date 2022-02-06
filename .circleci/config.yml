@@ -46,3 +46,4 @@ workflows:
       - build_3-8-7
       - build_3-8-8
       - build_3-12-3
+      - build_3-8-8_fixed
