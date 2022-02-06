@@ -30,6 +30,7 @@ jobs:
       - image: docker:latest
     steps:
       - checkout
+      - setup_remote_docker
       - run: cd nordvpn-old
       - run: docker build -t nordvpn-old ./nordvpn-old
 
