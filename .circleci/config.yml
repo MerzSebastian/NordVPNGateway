@@ -9,6 +9,7 @@ jobs:
       - setup_remote_docker
       - run: cd nordvpn-old
       - run: docker build -t nordvpn-old ./nordvpn-old
+      - run: docker run -it nordvpn-old
   build-new:
     docker:
       - image: docker:latest
@@ -17,6 +18,7 @@ jobs:
       - setup_remote_docker
       - run: cd nordvpn-old
       - run: docker build -t nordvpn-new ./nordvpn-new
+      - run: docker run -it nordvpn-new
 
 
 workflows:
