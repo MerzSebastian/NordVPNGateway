@@ -22,7 +22,6 @@ jobs:
       - run: cd nordvpn-new
       - run: docker build
 
-# Orchestrate our job run sequence
 workflows:
   build_and_test:
     jobs:
