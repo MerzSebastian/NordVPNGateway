@@ -25,9 +25,18 @@ jobs:
       - run: systemctl start docker
       - run: cd nordvpn-new
       - run: docker build -t nordvpn-new ./nordvpn-new
+  build-test:
+    docker:
+      - image: docker:latest
+    steps:
+      - checkout
+      - run: cd nordvpn-old
+      - run: docker build -t nordvpn-old ./nordvpn-old
+
 
 workflows:
   build_and_test:
     jobs:
       - build-old
       - build-new
+      - build-test
