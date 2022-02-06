@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build-3.8.7:
+  build_3-8-7:
     docker:
       - image: docker:latest
     steps:
@@ -10,7 +10,7 @@ jobs:
       - run: docker build -t nordvpn-old ./nordvpn-old
       - run: docker run --name nordvpn-old -d nordvpn-old
       - run: docker logs nordvpn-old && docker exec -d nordvpn-old echo ""
-  build-3.8.8:
+  build_3-8-8:
     docker:
       - image: docker:latest
     steps:
@@ -23,5 +23,5 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      - build-3.8.7
-      - build-3.8.8
+      - build_3-8-7
+      - build_3-8-8
