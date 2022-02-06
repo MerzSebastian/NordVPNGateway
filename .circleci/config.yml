@@ -7,20 +7,26 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: cd nordvpn-old
       - run: docker build -t nordvpn-old ./nordvpn-old
       - run: docker run --name nordvpn-old -d nordvpn-old
-      - run: docker exec -d nordvpn-old echo "Working!"
+      - run: docker exec -d nordvpn-old exit
   build-new:
     docker:
       - image: docker:latest
     steps:
       - checkout
       - setup_remote_docker
-      - run: cd nordvpn-old
       - run: docker build -t nordvpn-new ./nordvpn-new
       - run: docker run --name nordvpn-new -d nordvpn-new
-      - run: docker exec -d nordvpn-new echo "Working!"
+      - run: docker exec -d nordvpn-new exit
+  build-new-internal-error:
+    docker:
+      - image: docker:latest
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: docker build -t nordvpn-new ./nordvpn-new
+      - run: docker run -it nordvpn-new
 
 
 workflows:
@@ -28,3 +34,4 @@ workflows:
     jobs:
       - build-old
       - build-new
+      - build-new-internal-error
