@@ -9,6 +9,7 @@ jobs:
       - setup_remote_docker
       - run: docker build -t nordvpn-old ./nordvpn-old
       - run: docker run --name nordvpn-old -d nordvpn-old
+      - run: docker logs nordvpn-old
       - run: docker exec -d nordvpn-old echo ""
   build-new:
     docker:
@@ -18,6 +19,7 @@ jobs:
       - setup_remote_docker
       - run: docker build -t nordvpn-new ./nordvpn-new
       - run: docker run --name nordvpn-new -d nordvpn-new
+      - run: docker logs nordvpn-new
       - run: docker exec -d nordvpn-new echo ""
   build-new-internal:
     docker:
