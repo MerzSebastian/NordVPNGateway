@@ -21,19 +21,9 @@ jobs:
       - run: docker run --name nordvpn-new -d nordvpn-new
       - run: docker logs nordvpn-new
       - run: docker exec -d nordvpn-new echo ""
-  build-new-internal:
-    docker:
-      - image: docker:latest
-    steps:
-      - checkout
-      - setup_remote_docker
-      - run: docker build -t nordvpn-new ./nordvpn-new
-      - run: docker run -it nordvpn-new
-
 
 workflows:
   build_and_test:
     jobs:
       - build-old
       - build-new
-      - build-new-internal
