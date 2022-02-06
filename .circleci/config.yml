@@ -7,21 +7,31 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: docker build -t nordvpn-old ./nordvpn-old
-      - run: docker run --name nordvpn-old -d nordvpn-old
-      - run: docker logs nordvpn-old && docker exec -d nordvpn-old echo ""
+      - run: docker build -t nordvpn_3-8-7 -f Dockerfile_3-8-7
+      - run: docker run --name nordvpn_3-8-7 -d nordvpn-old
+      - run: docker logs nordvpn_3-8-7 && docker exec -d nordvpn_3-8-7 echo ""
   build_3-8-8:
     docker:
       - image: docker:latest
     steps:
       - checkout
       - setup_remote_docker
-      - run: docker build -t nordvpn-new ./nordvpn-new
-      - run: docker run --name nordvpn-new -d nordvpn-new
-      - run: docker logs nordvpn-new && docker exec -d nordvpn-new echo ""
+      - run: docker build -t nordvpn_3-8-8 -f Dockerfile_3-8-8
+      - run: docker run --name nordvpn_3-8-8 -d nordvpn_3-8-8
+      - run: docker logs nordvpn_3-8-8 && docker exec -d nordvpn_3-8-8 echo ""
+  build_3-12-3:
+    docker:
+      - image: docker:latest
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: docker build -t nordvpn_3-12-3 -f Dockerfile_3-12-3
+      - run: docker run --name nordvpn_3-12-3 -d nordvpn_3-12-3
+      - run: docker logs nordvpn_3-12-3 && docker exec -d nordvpn_3-12-3 echo ""
 
 workflows:
   build_and_test:
     jobs:
       - build_3-8-7
       - build_3-8-8
+      - build_3-12-3
