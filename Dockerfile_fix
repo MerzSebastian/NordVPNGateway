@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
-ARG VERSION=3.12.3
+ARG VERSION=3.8.8
 RUN apt update && \
-	   addgroup nordvpn && usermod -aG nordvpn root && \
+	addgroup nordvpn && usermod -aG nordvpn root && \
        apt install -y wget && \
        wget -O /tmp/nordrepo.deb https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb && \
        apt install -y /tmp/nordrepo.deb && \
