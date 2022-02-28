@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-ARG VERSION=3.8.8
+ARG VERSION=3.12.3
 RUN apt update && \
        RUN useradd -ms /bin/bash nordvpn && \
        addgroup nordvpn && usermod -aG nordvpn root && \
