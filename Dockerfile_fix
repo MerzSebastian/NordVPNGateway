@@ -5,6 +5,7 @@ RUN useradd -ms /bin/bash nordvpn
 RUN usermod -aG nordvpn root
 USER nordvpn
 WORKDIR /home/nordvpn
+RUN sudo su
 RUN apt install -y wget
 RUN wget -O /tmp/nordrepo.deb https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb
 RUN apt install -y /tmp/nordrepo.deb
