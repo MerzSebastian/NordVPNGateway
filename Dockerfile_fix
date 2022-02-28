@@ -1,16 +1,16 @@
 FROM ubuntu:18.04
 ARG VERSION=3.12.3
-RUN apt update && \
-       RUN useradd -ms /bin/bash nordvpn && \
-       addgroup nordvpn && usermod -aG nordvpn root && \
-       USER nordvpn && \
-	   WORKDIR /home/nordvpn && \
-       apt install -y wget && \
-       wget -O /tmp/nordrepo.deb https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb && \
-       apt install -y /tmp/nordrepo.deb && \
-       apt update && \
-       apt install -y nordvpn=$VERSION && \
-       apt remove -y wget nordvpn-release
+RUN apt update
+RUN useradd -ms /bin/bash nordvpn
+RUN addgroup nordvpn && usermod -aG nordvpn root
+USER nordvpn
+WORKDIR /home/nordvpn
+RUN apt install -y wget
+RUN wget -O /tmp/nordrepo.deb https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn-release_1.0.0_all.deb
+RUN apt install -y /tmp/nordrepo.deb
+RUN apt update
+RUN apt install -y nordvpn=$VERSION
+RUN apt remove -y wget nordvpn-release
 
 
 ENTRYPOINT ["/usr/sbin/nordvpnd", "&"]
