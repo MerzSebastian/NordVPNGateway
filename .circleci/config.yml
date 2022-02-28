@@ -19,7 +19,7 @@ jobs:
       - run: docker build -t nordvpn -f ./Dockerfile_3-8-8 .
       - run: docker run --name nordvpn -d nordvpn
       - run: docker logs nordvpn && docker exec -d nordvpn echo ""
-  build_3-8-8_fixed:
+  build_3-12-3_fixed:
     docker:
       - image: docker:latest
     steps:
