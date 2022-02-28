@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 ARG VERSION=3.12.3
 RUN apt update
 RUN useradd -ms /bin/bash nordvpn
-RUN addgroup nordvpn && usermod -aG nordvpn root
+RUN usermod -aG nordvpn root
 USER nordvpn
 WORKDIR /home/nordvpn
 RUN apt install -y wget
